@@ -1,0 +1,94 @@
+@import "node_modules/nord/src/sass/nord.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+$color-bg: white;
+$color-bg-alt: black;
+$color-text: black;
+$color-text-alt: white;
+
+html {
+  font-size: 10px;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: $color-bg;
+  color: $color-text;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100vw;
+  height: auto;
+  background-color: $color-bg-alt;
+  font-size: 2.5rem;
+  padding: 1rem;
+  .title_container {
+    margin-right: auto;
+    a {
+      display: block;
+      text-decoration: none;
+      color: $color-text-alt;
+      text-align: center;
+      margin-left: 1rem;
+    }
+  }
+  .inside_links {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2rem;
+    padding: 0;
+    li {
+      height: 100%;
+      a {
+        display: block;
+        color: $color-text-alt;
+        text-align: center;
+        text-decoration: none;
+        padding: 1rem 1rem;
+        background-color: $color-bg-alt;
+      }
+      a:hover {
+        color: $color-text-alt;
+      }
+    }
+  }
+  .outside_links {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    li {
+      height: 100%;
+      a {
+        display: block;
+        color: $color-text-alt;
+        text-align: center;
+        text-decoration: none;
+        padding: 1rem 1rem;
+        background-color: $color-bg-alt;
+      }
+      a:hover {
+        color: $color-text-alt;
+      }
+    }
+  }
+}
