@@ -1,0 +1,23 @@
+@use '../abstracts/colors' as c;
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: c.$color-bg-alt;
+}
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  list-style-type: none;
+
+  a {
+    display: block;
+    text-decoration: none;
+    padding: 1rem 1rem;
+    font-size: 3rem;
+    background-color: c.$color-bg-alt;
+    color: c.$color-text-alt;
+  }
+}

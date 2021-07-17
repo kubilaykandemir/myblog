@@ -1,0 +1,13 @@
+@use '../abstracts/colors' as c;
+
+.title_container {
+  margin-right: auto;
+  margin-left: 1rem;
+
+  a {
+    display: block;
+    font-size: 3rem;
+    text-align: center;
+    color: c.$color-text-alt;
+  }
+}
