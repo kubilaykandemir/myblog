@@ -39,7 +39,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
             slug: string;
           };
           frontmatter: {
-            tags: string[];
+            categories: string[];
           };
         };
       }[];
@@ -56,7 +56,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
               slug
             }
             frontmatter {
-              tags
+              categories
             }
           }
         }
@@ -69,41 +69,43 @@ export const createPages: GatsbyNode["createPages"] = async ({
     throw new Error("Failed getting GraphQL results");
   }
 
-  // All tags in my markdown files
+  // All categories in my markdown files
   const posts = result.data.allMarkdownRemark.edges;
   // const numberOfPages = result.data.allMarkdownRemark.totalCount;
-  const tagTemplate = path.resolve("./src/templates/tag-template.tsx");
-  const taglistTemplate = path.resolve("./src/templates/taglist.tsx");
+  const categoryTemplate = path.resolve(
+    "./src/templates/category-template.tsx"
+  );
+  const categoryListTemplate = path.resolve("./src/templates/categorylist.tsx");
 
-  let allTags: string[] = [];
+  let allCategories: string[] = [];
   _.each(posts, (edge) => {
-    if (_.get(edge, "node.frontmatter.tags")) {
-      allTags = allTags.concat(edge.node.frontmatter.tags);
+    if (_.get(edge, "node.frontmatter.categories")) {
+      allCategories = allCategories.concat(edge.node.frontmatter.categories);
     }
   });
-  const uniqAllTags = _.uniq(allTags);
+  const uniqAllCategories = _.uniq(allCategories);
 
   createPage({
-    path: `/tags/`,
-    component: taglistTemplate,
+    path: `/categories/`,
+    component: categoryListTemplate,
     context: {
-      tagsArray: uniqAllTags,
+      categoriesArray: uniqAllCategories,
     },
   });
 
-  uniqAllTags.forEach((tag) => {
+  uniqAllCategories.forEach((category) => {
     const filteredPosts = posts.filter((element) =>
-      element.node.frontmatter.tags.includes(tag)
+      element.node.frontmatter.categories.includes(category)
     );
     const limit = 10;
     const numPages = filteredPosts.length;
     const pageNumber = Math.ceil(numPages / limit);
     for (let i = 0; i < pageNumber; i++) {
       createPage({
-        path: `/tags/${tag}/${i + 1}`,
-        component: tagTemplate,
+        path: `/categories/${category}/${i + 1}`,
+        component: categoryTemplate,
         context: {
-          tag,
+          category,
           limit: limit,
           skip: i * limit,
           numPages: numPages,

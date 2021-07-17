@@ -6,13 +6,13 @@ const Navbar: React.FC = () => {
     <nav>
       <ul className="inside_links">
         <li>
-          <Link to="/">Homepage</Link>
+          <Link to="/">Anasayfa</Link>
         </li>
         <li>
-          <Link to="/tags">Tags</Link>
+          <Link to="/categories">Kategoriler</Link>
         </li>
         <li>
-          <Link to="about">About</Link>
+          <Link to="about">Hakkimda</Link>
         </li>
       </ul>
     </nav>

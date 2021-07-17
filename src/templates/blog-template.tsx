@@ -1,6 +1,6 @@
-import React from 'react';
-import Layout from '../components/Layout';
-import { graphql, PageProps } from 'gatsby';
+import React from "react";
+import Layout from "../components/Layout";
+import { graphql, PageProps } from "gatsby";
 
 interface GraphQLResult {
   markdownRemark: {
@@ -9,7 +9,7 @@ interface GraphQLResult {
       author: string;
       date: string;
       description: string;
-      tags: [string];
+      categories: [string];
       title: string;
     };
   };
@@ -17,14 +17,14 @@ interface GraphQLResult {
 
 const BlogTemplate: React.FC<PageProps<GraphQLResult>> = ({ data }) => {
   // const { id } = props.data.markdownRemark
-  const { title, tags, description } = data.markdownRemark.frontmatter;
+  const { title, categories, description } = data.markdownRemark.frontmatter;
   // const { prev, next } = props.pageContext
 
   return (
     <Layout>
       <div>{title}</div>
       <div>{description}</div>
-      <div>{tags}</div>
+      <div>{categories}</div>
       <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
     </Layout>
   );
@@ -40,7 +40,7 @@ export const query = graphql`
         author
         date
         description
-        tags
+        categories
         title
       }
     }

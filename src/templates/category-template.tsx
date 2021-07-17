@@ -9,19 +9,18 @@ interface GraphQLResult {
         id: string;
         frontmatter: {
           title: string;
-          slug: string;
           description: string;
           date: string;
           image: string;
           author: string;
-          tags: string[];
+          categories: string[];
         };
       };
     }[];
   };
 }
 
-const TagTemplate: React.FC<PageProps<GraphQLResult>> = ({ data }) => {
+const CategoryTemplate: React.FC<PageProps<GraphQLResult>> = ({ data }) => {
   const edges = data.allMarkdownRemark.edges;
   const postArray = edges.map((edge) => {
     const frontMatter = edge.node.frontmatter;
@@ -38,12 +37,12 @@ const TagTemplate: React.FC<PageProps<GraphQLResult>> = ({ data }) => {
   return <Layout>{postArray}</Layout>;
 };
 
-export default TagTemplate;
+export default CategoryTemplate;
 
 export const query = graphql`
-  query TagTemplateQuery($tag: String, $limit: Int, $skip: Int) {
+  query CategoryTemplateQuery($category: String, $limit: Int, $skip: Int) {
     allMarkdownRemark(
-      filter: { frontmatter: { tags: { eq: $tag } } }
+      filter: { frontmatter: { categories: { eq: $category } } }
       sort: { fields: frontmatter___date, order: DESC }
       skip: $skip
       limit: $limit
@@ -56,12 +55,11 @@ export const query = graphql`
           }
           frontmatter {
             title
-            slug
             description
             date
             image
             author
-            tags
+            categories
           }
         }
       }

@@ -23,7 +23,9 @@ export default {
     },
     {
       resolve: `gatsby-transformer-remark`,
-      options: {},
+      options: {
+        excerpt_separator: `<!-- end -->`,
+      },
     },
     // {
     //   resolve: `gatsby-plugin-mdx`,
