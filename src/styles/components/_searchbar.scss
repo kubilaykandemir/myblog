@@ -2,13 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  padding: 1rem 1rem;
   font-size: 1.6rem;
   width: 100%;
+  border: 1px solid black;
 }
 
 .searchBar {
   margin-right: 1rem;
+  width: 100%;
 }
 
 .visually-hidden {

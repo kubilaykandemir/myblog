@@ -13,7 +13,7 @@ const CategoryList: React.FC<PageProps<null, PageContextType>> = ({
   const listOfArrays = categoriesArray.map((category, index) => {
     return (
       <li key={index}>
-        <Link to={`/categories/${category}/1`}>
+        <Link className="categories__links" to={`/categories/${category}/1`}>
           {category.replace(category[0], category[0].toUpperCase())}
         </Link>
       </li>
@@ -21,7 +21,9 @@ const CategoryList: React.FC<PageProps<null, PageContextType>> = ({
   });
   return (
     <Layout>
-      <ul>{listOfArrays}</ul>
+      <div className="categories__container">
+        <ul>{listOfArrays}</ul>
+      </div>
     </Layout>
   );
 };

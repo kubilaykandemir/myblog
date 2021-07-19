@@ -1,6 +1,7 @@
 import { graphql, PageProps } from "gatsby";
 import React from "react";
 import Layout from "../components/Layout";
+import PostCards from "../components/PostCards";
 
 interface GraphQLResult {
   allMarkdownRemark: {
@@ -8,12 +9,15 @@ interface GraphQLResult {
       node: {
         id: string;
         frontmatter: {
+          author: string;
           title: string;
           description: string;
           date: string;
-          image: string;
-          author: string;
           categories: string[];
+        };
+        excerpt: string;
+        fields: {
+          slug: string;
         };
       };
     }[];
@@ -21,20 +25,13 @@ interface GraphQLResult {
 }
 
 const CategoryTemplate: React.FC<PageProps<GraphQLResult>> = ({ data }) => {
-  const edges = data.allMarkdownRemark.edges;
-  const postArray = edges.map((edge) => {
-    const frontMatter = edge.node.frontmatter;
-    return (
-      <div key={edge.node.id}>
-        <h2>{frontMatter.title}</h2>
-        <h2>{frontMatter.author}</h2>
-        <h2>{frontMatter.date}</h2>
-        <h2>{frontMatter.description}</h2>
-      </div>
-    );
-  });
+  const posts = data.allMarkdownRemark.edges;
 
-  return <Layout>{postArray}</Layout>;
+  return (
+    <Layout>
+      <PostCards posts={posts} />
+    </Layout>
+  );
 };
 
 export default CategoryTemplate;
@@ -53,11 +50,11 @@ export const query = graphql`
           fields {
             slug
           }
+          excerpt
           frontmatter {
             title
             description
             date
-            image
             author
             categories
           }

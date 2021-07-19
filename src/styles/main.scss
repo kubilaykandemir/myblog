@@ -19,4 +19,7 @@
 @use 'components/blogcard';
 
 // PAGES (HOME ABOUT ETC)
-@use 'pages/home'; // THEMES
+@use 'pages/home';
+@use 'pages/categories';
+
+// THEMES

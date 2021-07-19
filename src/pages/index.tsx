@@ -6,32 +6,33 @@ import SearchBar from "../components/SearchBar";
 import PostCards from "../components/PostCards";
 import { graphql, useStaticQuery } from "gatsby";
 
-const Home: React.FC = () => {
-  interface GraphQLResult {
-    localSearchBlog: {
-      store: any;
-      index: string;
-    };
-    allMarkdownRemark: {
-      edges: {
-        node: {
-          frontmatter: {
-            author: string;
-            categories: string[];
-            date: string;
-            description: string;
-            title: string;
-          };
-          excerpt: string;
-          id: string;
-          fields: {
-            slug: string;
-          };
+// GraphQLResult type for useStaticQuery function
+interface GraphQLResult {
+  localSearchBlog: {
+    store: any;
+    index: string;
+  };
+  allMarkdownRemark: {
+    edges: {
+      node: {
+        frontmatter: {
+          author: string;
+          categories: string[];
+          date: string;
+          description: string;
+          title: string;
         };
-      }[];
-    };
-  }
+        excerpt: string;
+        id: string;
+        fields: {
+          slug: string;
+        };
+      };
+    }[];
+  };
+}
 
+const Home: React.FC = () => {
   const data: GraphQLResult = useStaticQuery(
     graphql`
       query {
@@ -61,12 +62,12 @@ const Home: React.FC = () => {
     `
   );
 
+  // Gettin posts array for PostCards component. If there is a search query use flexSearch results otherwise use default data for it;
+  const { index, store } = data.localSearchBlog;
   let searchQuery = null;
   if (typeof window !== "undefined") {
     searchQuery = new URLSearchParams(window.location.search).get("s");
   }
-  const { index, store } = data.localSearchBlog;
-
   const searchResult = unFlattenResults(
     flexSearch.useFlexSearch(searchQuery, index, store)
   );
@@ -82,6 +83,7 @@ const Home: React.FC = () => {
 };
 export default Home;
 
+// This section is for flattening the flexSearch results because store stores the values in a flat objects in an array;
 interface searchResultPostType {
   author: string;
   date: string;
