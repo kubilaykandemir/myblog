@@ -4,6 +4,7 @@
 // NO VENDORS YET(BOOTSTRAP AND OTHER 3RD PARTY CSS ETC.)
 
 // BASE CSS FILES
+@use 'base/normalize';
 @use 'base/html';
 @use 'base/fonts';
 
@@ -14,6 +15,8 @@
 // COMPONENTS
 @use 'components/links';
 @use 'components/site-logo';
+@use 'components/searchbar';
+@use 'components/blogcard';
 
 // PAGES (HOME ABOUT ETC)
 @use 'pages/home'; // THEMES

@@ -1,0 +1,39 @@
+.blogCard__container {
+  margin-top: 1rem;
+}
+
+.blogCard {
+  padding: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  border: 1px solid black;
+}
+
+.blogCard__title {
+  display: block;
+}
+
+.blogCard__date {
+  font-size: 1.4rem;
+  color: gray;
+}
+
+.blogCard__excerpt {
+  margin-top: 1rem;
+}
+
+.blogCard__link {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.blogCard__categories {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+.blogCard__category {
+  display: inline-block;
+  margin-left: 1ch;
+}

@@ -46,7 +46,9 @@ export const createPages: GatsbyNode["createPages"] = async ({
       totalCount: number;
     };
   }
+
   const { createPage } = actions;
+
   const result = await graphql<GraphQLResult>(`
     {
       allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
