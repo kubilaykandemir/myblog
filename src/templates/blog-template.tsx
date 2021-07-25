@@ -22,10 +22,10 @@ const BlogTemplate: React.FC<PageProps<GraphQLResult>> = ({ data }) => {
 
   return (
     <Layout>
-      <div>{title}</div>
-      <div>{description}</div>
-      <div>{categories}</div>
-      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+      <div
+        className="markdown-body"
+        dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
+      />
     </Layout>
   );
 };

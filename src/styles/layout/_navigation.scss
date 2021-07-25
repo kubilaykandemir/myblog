@@ -1,6 +1,8 @@
 @use '../abstracts/colors' as c;
 
 nav {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -9,18 +11,23 @@ nav {
   font-size: 2.5rem;
   padding: 1rem;
   background-color: c.$color-bg-alt;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+
+    a {
+      color: c.$color-text-alt;
+      padding: 1rem 1rem;
+      display: block;
+    }
+  }
+  
 }
 
-.inside_links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: center;
-  list-style-type: none;
-
-  a {
-    color: c.$color-text-alt;
-    padding: 1rem 1rem;
-    display: block;
-  }
+.searchBar__container {
+  align-self: flex-end;
 }

@@ -2,14 +2,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 1rem;
+  padding: 1.5rem 1.5rem;
+  // margin: 0 auto;
+  margin-left: auto;
   font-size: 1.6rem;
-  width: 100%;
   border: 1px solid black;
+
+  button[type=submit] {
+    background: transparent;
+    border: none;
+    color: white;
+  }
+  button:hover {
+    cursor: pointer;
+  }
 }
 
 .searchBar {
   margin-right: 1rem;
+  padding: 1rem;
   width: 100%;
 }
 

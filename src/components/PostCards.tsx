@@ -29,38 +29,32 @@ const PostCards: React.FC<PostCardProps> = ({ posts }) => {
     const categories = edge.node.frontmatter.categories.map(
       (category, index) => {
         return (
-          <Link
-            key={index}
-            className="blogCard__category"
-            to={`/categories/${category}/1`}
-          >
-            {category + ","}
-          </Link>
+          <li key={index}>
+            <Link to={`/categories/${category}/1`}>{category + ","}</Link>
+          </li>
         );
       }
     );
 
     return (
-      <div key={edge.node.id} className="blogCard">
-        <Link className="blogCard__title" to={blogLink}>
+      <div key={edge.node.id} className="postCard">
+        <Link to={blogLink}>
           <h2>{title}</h2>
         </Link>
-        <p className="blogCard__date">
+        <span>
           {date} by {author}
-        </p>
-        <p className="blogCard__excerpt">{excerpt}</p>
-        <Link to={blogLink} className="blogCard__link">
-          Read More
-        </Link>
-        <p className="blogCard__categories">
+        </span>
+        <p>{excerpt}</p>
+        <Link to={blogLink}>Read More</Link>
+        <ul>
           <FaFolder />
           {categories}
-        </p>
+        </ul>
       </div>
     );
   });
 
-  return <div className="blogCard__container">{postCardsArray}</div>;
+  return <div className="postCard__container">{postCardsArray}</div>;
 };
 
 export default PostCards;

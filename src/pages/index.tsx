@@ -1,6 +1,5 @@
 import React from "react";
-// import { useFlexSearch } from "react-use-flexsearch";
-const flexSearch = require("react-use-flexsearch");
+import { useFlexSearch } from "react-use-flexsearch";
 import Layout from "../components/Layout";
 import SearchBar from "../components/SearchBar";
 import PostCards from "../components/PostCards";
@@ -9,7 +8,18 @@ import { graphql, useStaticQuery } from "gatsby";
 // GraphQLResult type for useStaticQuery function
 interface GraphQLResult {
   localSearchBlog: {
-    store: any;
+    store: {
+      [key: string]: {
+        author: string;
+        date: string;
+        title: string;
+        excerpt: string;
+        slug: string;
+        description: string;
+        id: string;
+        categories: string[];
+      };
+    };
     index: string;
   };
   allMarkdownRemark: {
@@ -69,15 +79,16 @@ const Home: React.FC = () => {
     searchQuery = new URLSearchParams(window.location.search).get("s");
   }
   const searchResult = unFlattenResults(
-    flexSearch.useFlexSearch(searchQuery, index, store)
+    useFlexSearch(searchQuery, index, store)
   );
 
   const posts = searchQuery ? searchResult : data.allMarkdownRemark.edges;
 
   return (
     <Layout>
-      <SearchBar />
-      <PostCards posts={posts} />
+      <div className="homepage__container">
+        <PostCards posts={posts} />
+      </div>
     </Layout>
   );
 };
@@ -94,9 +105,10 @@ interface searchResultPostType {
   categories: string[];
   id: string;
 }
+[];
 
-const unFlattenResults = (results: any[]) => {
-  return results.map((post: searchResultPostType) => {
+const unFlattenResults = (results: searchResultPostType[]) => {
+  return results.map((post) => {
     const { author, date, title, excerpt, slug, categories, description, id } =
       post;
     return {

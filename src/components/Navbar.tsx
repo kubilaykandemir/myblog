@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "gatsby";
+import SearchBar from "./SearchBar";
 
 const Navbar: React.FC = () => {
   return (
     <nav>
-      <ul className="inside_links">
+      <ul>
         <li>
           <Link to="/">Anasayfa</Link>
         </li>
@@ -15,6 +16,7 @@ const Navbar: React.FC = () => {
           <Link to="about">Hakkimda</Link>
         </li>
       </ul>
+      <SearchBar />
     </nav>
   );
 };

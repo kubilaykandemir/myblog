@@ -16,10 +16,12 @@
 @use 'components/links';
 @use 'components/site-logo';
 @use 'components/searchbar';
-@use 'components/blogcard';
+@use 'components/postcard';
 
 // PAGES (HOME ABOUT ETC)
 @use 'pages/home';
 @use 'pages/categories';
+@use 'vendors/github-markdown';
+@use 'pages/blogpages';
 
 // THEMES
